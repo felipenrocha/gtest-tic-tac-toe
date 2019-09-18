@@ -8,15 +8,12 @@ using namespace std;
 
 class JogoDaVelha
 {
-protected:
-    int jogo[3][3];
-    int transformValor(char valor);
-
 public:
+    int matriz[3][3];
+    JogoDaVelha(int valor);
     int getResultado();
-    void insereValor(char valor, int linha, int coluna);
-    char getValor(int linha, int coluna);
-    JogoDaVelha();
+    void setValor(int valor, int linha, int coluna);
+    int getValor(int linha, int coluna);
 };
 
 #endif

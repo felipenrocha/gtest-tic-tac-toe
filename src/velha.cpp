@@ -1,6 +1,6 @@
 #include "../include/velha.hpp"
 
-JogoDaVelha::JogoDaVelha()
+JogoDaVelha::JogoDaVelha(int valor)
 {
 
     /* Para todos elementos do array deve-se ser inicializado o valor 0,
@@ -12,36 +12,20 @@ JogoDaVelha::JogoDaVelha()
     {
         for (int j = 0; i < 3; i++)
         {
-            insereValor(0, i, j);
+            setValor(valor, i, j);
         }
     }
 }
 
-void JogoDaVelha::insereValor(char valor, int linha, int coluna)
+void JogoDaVelha::setValor(int valor, int linha, int coluna)
 {
-    if (valor != 'X' || valor != 'x' || valor != 'o' || valor != 'O' || valor != 0)
+    if (valor != 1 && valor != 2 && valor != 0)
     {
-        throw invalid_argument("Valor inserido inválido! Insira 'X' ou 'O' para jogar.");
+        throw invalid_argument("Valor inserido inválido! Insira 1 para 'X' ou 2 para 'O'.");
     }
-    this->jogo[linha][coluna] = transformValor(valor);
+    this->matriz[linha][coluna] = valor;
 }
 int JogoDaVelha::getValor(int linha, int coluna)
 {
-    return this->jogo[linha][coluna];
-}
-
-int JogoDaVelha::transformValor(char valor)
-{
-    switch (valor)
-    {
-    case ('x' || 'X'):
-        return 1;
-        break;
-    case ('o' || 'O'):
-        return 2;
-        break;
-    default:
-        return 0;
-        break;
-    }
+    return this->matriz[linha][coluna];
 }
