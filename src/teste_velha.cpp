@@ -84,7 +84,7 @@ TEST(JogoDaVelhaTeste, VencedorX)
 
 TEST(JogoDaVelhaTeste, VencedorO)
 {
-    // Espera-se que caso o vencedor do jogo seja o O(2), a função retorne 2s.
+    // Espera-se que caso o vencedor do jogo seja o O(2), a função retorne 2.
     // Linha com O
     int jogoTeste1[3][3] = {
         {1, 1, 0},
@@ -101,7 +101,6 @@ TEST(JogoDaVelhaTeste, VencedorO)
     JogoDaVelha jogo2(jogoTeste2);
     ASSERT_EQ(2, jogo2.getResultado());
 
-
     // Diagonais com O:
 
     // Principal:
@@ -111,7 +110,7 @@ TEST(JogoDaVelhaTeste, VencedorO)
         {1, 0, 2}};
     JogoDaVelha jogo3(jogoTeste3);
     ASSERT_EQ(2, jogo3.getResultado());
-    
+
     // Secundária:
     int jogoTeste4[3][3] = {
         {0, 1, 2},
@@ -119,4 +118,31 @@ TEST(JogoDaVelhaTeste, VencedorO)
         {2, 0, 0}};
     JogoDaVelha jogo4(jogoTeste4);
     ASSERT_EQ(2, jogo4.getResultado());
+}
+
+TEST(JogoDaVelhaTeste, Empate)
+{
+    // Espera-se que caso o jogo esteja empatado, a função retorne 0.
+    // Empates:
+
+    int jogoTeste1[3][3] = {
+        {1, 1, 2},
+        {2, 2, 1},
+        {1, 1, 2}};
+    JogoDaVelha jogo1(jogoTeste1);
+    ASSERT_EQ(0, jogo1.getResultado());
+
+    int jogoTeste2[3][3] = {
+        {1, 1, 2},
+        {2, 1, 1},
+        {1, 2, 2}};
+    JogoDaVelha jogo2(jogoTeste2);
+    ASSERT_EQ(0, jogo2.getResultado());
+
+    int jogoTeste3[3][3] = {
+        {1, 2, 1},
+        {1, 1, 2},
+        {2, 1, 2}};
+    JogoDaVelha jogo3(jogoTeste3);
+    ASSERT_EQ(0, jogo3.getResultado());
 }
