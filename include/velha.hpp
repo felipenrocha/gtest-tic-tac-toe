@@ -17,6 +17,7 @@ public:
     bool vitoriaX();
     bool vitoriaO();
     bool jogoCheio();
+    bool jogoIndefinido();
     bool checaLinha(int valor, int linha);
     bool checaColuna(int valor, int coluna);
     bool checaDiagonalPrincipal(int valor);

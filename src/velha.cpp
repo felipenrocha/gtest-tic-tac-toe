@@ -13,7 +13,11 @@ int JogoDaVelha::getValor(int linha, int coluna)
 }
 int JogoDaVelha::getResultado()
 {
-    if (jogoCheio() && !vitoriaO() && !vitoriaX())
+    if (jogoIndefinido())
+    {
+        return -1;
+    }
+    else if (jogoCheio() && !vitoriaO() && !vitoriaX())
     {
         // Caso um jogo tenha válido terminado e não exista jogador vencedor, o jogo está empatado
         return 0;
@@ -61,6 +65,37 @@ bool JogoDaVelha::vitoriaO()
     // Passa o valor de O para a função que analiza a vitoria de um jogo dado um valor
 
     if (vitoria(2))
+    {
+        return true;
+    }
+    return false;
+}
+
+bool JogoDaVelha::jogoCheio()
+{
+    /*
+        Caso toda matriz possua valores 1 ou 2, o jogo está cheio/finalizado.
+    */
+    for (int i = 0; i < 3; i++)
+    {
+        // Loop pela matriz para checar se os valores são diferentes de 0.
+        for (int j = 0; j < 3; j++)
+        {
+            if (getValor(i, j) == 0)
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+/* 
+    O método jogoIndefinido() retorna true caso o jogo não esteja cheio e não haja vencedores.
+*/
+
+bool JogoDaVelha::jogoIndefinido()
+{
+    if(!jogoCheio() && !vitoriaO() && !vitoriaX())
     {
         return true;
     }
@@ -144,25 +179,6 @@ bool JogoDaVelha::checaDiagonalSecundaria(int valor)
     if (quantidade == 3)
     {
         return true;
-    }
-    return false;
-}
-
-bool JogoDaVelha::jogoCheio()
-{
-    /*
-        Caso toda matriz possua valores 1 ou 2, o jogo está cheio/finalizado.
-    */
-    for (int i = 0; i < 3; i++)
-    {
-        // Loop pela matriz para checar se os valores são diferentes de 0.
-        for (int j = 0; j < 3; j++)
-        {
-            if (getValor(i, j) == 0)
-            {
-                return true;
-            }
-        }
     }
     return false;
 }
