@@ -11,9 +11,13 @@ class JogoDaVelha
 public:
     int matriz[3][3];
     JogoDaVelha(int jogo[3][3]);
-    int getResultado();
-    void setValor(int valor, int linha, int coluna);
     int getValor(int linha, int coluna);
+    int getResultado();
+    bool vitoriaX();
+    int checaLinha(int valor, int linha);
+    int checaColuna(int valor, int coluna);
+    int checaDiagonalPrincipal(int valor);
+    int checaDiagonalSecundaria(int valor);
 };
 
 #endif
