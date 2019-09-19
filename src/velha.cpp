@@ -13,11 +13,15 @@ int JogoDaVelha::getValor(int linha, int coluna)
 }
 int JogoDaVelha::getResultado()
 {
-    if (jogoIndefinido())
+    if (jogoImpossivel())
+    {
+        return -2;
+    }
+    else if (jogoIndefinido())
     {
         return -1;
     }
-    else if (jogoCheio() && !vitoriaO() && !vitoriaX())
+    else if (jogoCheio() && !vitoriaO() && !vitoriaX()) //TODO: refatorar para função
     {
         // Caso um jogo tenha válido terminado e não exista jogador vencedor, o jogo está empatado
         return 0;
@@ -95,7 +99,47 @@ bool JogoDaVelha::jogoCheio()
 
 bool JogoDaVelha::jogoIndefinido()
 {
-    if(!jogoCheio() && !vitoriaO() && !vitoriaX())
+    if (!jogoCheio() && !vitoriaO() && !vitoriaX())
+    {
+        return true;
+    }
+    return false;
+}
+
+bool JogoDaVelha::jogoImpossivel()
+{
+    // O jogo será impossivel caso os valores seja diferentes de 0, 1 ou 2;
+    // Ou a quantidadeX > 1 + quantidadeO (Significa que o X jogou 2 vezes.)
+    // Ou a quantidadeO > quantidadeX (O jogou duas vezes ou começou a partida.)
+    // Ou 2 jogos vitoriosos
+
+    int quantidadeX = 0;
+    int quantidadeO = 0;
+    if (vitoriaX() && vitoriaO())
+    {
+        return true;
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            switch (getValor(i, j))
+            {
+            case 1:
+                quantidadeX++;
+                break;
+            case 2:
+                quantidadeO++;
+                break;
+            case 0:
+                break;
+            default:
+                return true;
+                break;
+            }
+        }
+    }
+    if (quantidadeO > quantidadeX || quantidadeX > 1 + quantidadeO)
     {
         return true;
     }
