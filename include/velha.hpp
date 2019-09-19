@@ -13,13 +13,14 @@ public:
     JogoDaVelha(int jogo[3][3]);
     int getValor(int linha, int coluna);
     int getResultado();
-    int vitoria(int valor);
+    bool vitoria(int valor);
     bool vitoriaX();
     bool vitoriaO();
-    int checaLinha(int valor, int linha);
-    int checaColuna(int valor, int coluna);
-    int checaDiagonalPrincipal(int valor);
-    int checaDiagonalSecundaria(int valor);
+    bool jogoCheio();
+    bool checaLinha(int valor, int linha);
+    bool checaColuna(int valor, int coluna);
+    bool checaDiagonalPrincipal(int valor);
+    bool checaDiagonalSecundaria(int valor);
 };
 
 #endif
