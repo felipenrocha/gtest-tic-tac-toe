@@ -26,8 +26,8 @@ $(ODIR)/%.o: %.cpp $(DEPS)
 
 
 
-## default: make vetor
-Velha:$(OBJ)
+## default: 
+velha:$(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(MAIN) $(LIBS)
 .PHONY: clean
 
