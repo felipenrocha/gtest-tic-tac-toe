@@ -18,24 +18,49 @@ int JogoDaVelha::getResultado()
     {
         return 1;
     }
+    if (vitoriaO())
+    {
+        return 2;
+    }
 }
-
-bool JogoDaVelha::vitoriaX()
+int JogoDaVelha::vitoria(int valor)
 {
-    // Função responsável para checar se o X é vitorioso.
+    // Função responsável para checar se o valor inteiro n é vitorioso.
 
     for (int i = 0; i < 3; i++)
     {
-        if (checaLinha(1, i) || checaColuna(1, i))
+        // Checa se as colunas ou linhas possuem os valores iguais
+        if (checaLinha(valor, i) || checaColuna(valor, i))
         {
             return 1;
         }
     }
-    if (checaDiagonalPrincipal(1) || checaDiagonalSecundaria(1))
+    // Checa se as diagonais possuem os valores iguais
+    if (checaDiagonalPrincipal(valor) || checaDiagonalSecundaria(valor))
     {
         return 1;
     }
     return 0;
+}
+
+bool JogoDaVelha::vitoriaX()
+{
+    // Passa o valor de X para a função que analiza a vitoria de um jogo dado um valor
+    if (vitoria(1))
+    {
+        return true;
+    }
+    return false;
+}
+bool JogoDaVelha::vitoriaO()
+{
+    // Passa o valor de O para a função que analiza a vitoria de um jogo dado um valor
+
+    if (vitoria(2))
+    {
+        return true;
+    }
+    return false;
 }
 
 /*
@@ -46,64 +71,76 @@ o valor inteiro.
 int JogoDaVelha::checaLinha(int valor, int linha)
 {
     int elementoAnterior = valor;
+    int quantidade = 0;
 
     for (int i = 0; i < 3; i++)
     {
-        if (getValor(linha, i) != elementoAnterior)
+        if (getValor(linha, i) == valor)
         {
-            return 0;
+            quantidade++;
         }
-        elementoAnterior = getValor(linha, i);
     }
-    return 1;
+    if (quantidade == 3)
+    {
+        return 1;
+    }
+    return 0;
 }
 
 int JogoDaVelha::checaColuna(int valor, int coluna)
 {
-    int elementoAnterior = valor;
 
+    int quantidade = 0; // Variavel responsavvel para garantir que existem 3 elementos iguais na mesma linha
     for (int i = 0; i < 3; i++)
     {
-        if (getValor(i, coluna) != elementoAnterior)
+        if (getValor(i, coluna) == valor)
         {
-            return 0;
+            quantidade++;
         }
-        elementoAnterior = getValor(i, coluna);
     }
-    return 1;
+    if (quantidade == 3)
+    {
+        return 1;
+    }
+    return 0;
 }
 /*
-Os métodos checaDiagonalPrincipal e checaDiagonalSecundaria são responsáveis por checar se todos os elementos da linha/coluna sao iguais dado
-o valor inteiro.
+Os métodos checaDiagonalPrincipal e checaDiagonalSecundaria são responsáveis por checar se todos os elementos
+das diagonais sao iguais dado o valor inteiro.
 */
 int JogoDaVelha::checaDiagonalPrincipal(int valor)
 {
-    int elementoAnterior = valor;
+    int quantidade = 0;
 
     // Diagonal principal:
     for (int i = 0; i < 3; i++)
     {
-        if (getValor(i, i) != elementoAnterior)
+        if (getValor(i, i) == valor)
         {
-            return 0;
+            quantidade++;
         }
-        elementoAnterior = getValor(i, i);
     }
-    elementoAnterior = valor;
-
-    return 1;
+    if (quantidade == 3)
+    {
+        return 1;
+    }
+    return 0;
 }
 
 int JogoDaVelha::checaDiagonalSecundaria(int valor)
 {
-    int elementoAnterior = valor;
+    int quantidade = 0;
     // Diagonal secundária:
-    for (int i = 2, j = 0; i < 3; i++, j++)
+    for (int i = 2, j = 0; i >= 0, j < 3; i--, j++)
     {
-        if (getValor(i, j) != elementoAnterior)
+        if (getValor(i, j) == valor)
         {
-            return 0;
+            quantidade++;
         }
-        elementoAnterior = getValor(i, j);
     }
+    if (quantidade == 3)
+    {
+        return 1;
+    }
+    return 0;
 }
