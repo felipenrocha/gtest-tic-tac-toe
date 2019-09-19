@@ -18,6 +18,7 @@ public:
     bool vitoriaO();
     bool jogoCheio();
     bool jogoIndefinido();
+    bool jogoImpossivel();
     bool checaLinha(int valor, int linha);
     bool checaColuna(int valor, int coluna);
     bool checaDiagonalPrincipal(int valor);

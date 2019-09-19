@@ -114,7 +114,7 @@ TEST(JogoDaVelhaTeste, VencedorO)
     // Secundária:
     int jogoTeste4[3][3] = {
         {0, 1, 2},
-        {1, 2, 0},
+        {1, 2, 1},
         {2, 0, 0}};
     JogoDaVelha jogo4(jogoTeste4);
     ASSERT_EQ(2, jogo4.getResultado());
@@ -172,4 +172,33 @@ TEST(JogoDaVelhaTeste, JogoIndefinido)
         {2, 0, 1}};
     JogoDaVelha jogo3(jogoTeste3);
     ASSERT_EQ(-1, jogo3.getResultado());
+}
+
+TEST(JogoDaVelhaTeste, JogoImpossivel)
+{
+    // Retorna -2 se o jogo é com certeza impossível pelas regras (ex. todas as posições são X).
+
+    int jogoTeste1[3][3] = {
+        {1, 1, 1},
+        {1, 1, 1},
+        {1, 1, 1}};
+    JogoDaVelha jogo1(jogoTeste1);
+    ASSERT_EQ(-2, jogo1.getResultado());
+    // Dois vencedores:
+
+    int jogoTeste2[3][3] = {
+        {2, 1, 2},
+        {2, 1, 1},
+        {2, 1, 1}};
+    JogoDaVelha jogo2(jogoTeste2);
+    ASSERT_EQ(-2, jogo2.getResultado());
+
+    // O começou partida:
+
+    int jogoTeste3[3][3] = {
+        {0, 0, 2},
+        {0, 0, 0},
+        {0, 0, 0}};
+    JogoDaVelha jogo3(jogoTeste3);
+    ASSERT_EQ(-2, jogo3.getResultado());
 }
