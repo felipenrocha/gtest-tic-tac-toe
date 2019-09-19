@@ -79,3 +79,41 @@ TEST(JogoDaVelhaTeste, VencedorX)
     JogoDaVelha jogo4(jogoTeste4);
     ASSERT_EQ(1, jogo4.getResultado());
 }
+
+TEST(JogoDaVelhaTeste, VencedorO)
+{
+    // Linha com O
+    int jogoTeste1[3][3] = {
+        {1, 1, 0},
+        {2, 2, 2},
+        {0, 1, 0}};
+    JogoDaVelha jogo1(jogoTeste1);
+    ASSERT_EQ(2, jogo1.getResultado());
+
+    // Coluna com O
+    int jogoTeste2[3][3] = {
+        {0, 2, 0},
+        {1, 2, 1},
+        {1, 2, 0}};
+    JogoDaVelha jogo2(jogoTeste2);
+    ASSERT_EQ(2, jogo2.getResultado());
+
+
+    // Diagonais com O:
+
+    // Principal:
+    int jogoTeste3[3][3] = {
+        {2, 0, 1},
+        {1, 2, 0},
+        {1, 0, 2}};
+    JogoDaVelha jogo3(jogoTeste3);
+    ASSERT_EQ(2, jogo3.getResultado());
+    
+    // Secundária:
+    int jogoTeste4[3][3] = {
+        {0, 1, 2},
+        {1, 2, 0},
+        {2, 0, 0}};
+    JogoDaVelha jogo4(jogoTeste4);
+    ASSERT_EQ(2, jogo4.getResultado());
+}
