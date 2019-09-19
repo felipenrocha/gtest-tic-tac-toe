@@ -26,6 +26,7 @@ TEST(JogoDaVelhaTeste, CriaJogo)
 }
 TEST(JogoDaVelhaTeste, getValor)
 {
+    // Teste para garantir que a função getValor(int linha, int coluna) funcione corretamente.
     // Obs.: linhas e colunas começam em 0
     int jogoTeste[3][3] = {
         {1, 2, 0},
@@ -47,6 +48,7 @@ TEST(JogoDaVelhaTeste, getValor)
 
 TEST(JogoDaVelhaTeste, VencedorX)
 {
+    // Espera-se que caso o vencedor do jogo seja o X(1), a função retorne 1.
     // Linha com X
     int jogoTeste1[3][3] = {
         {1, 1, 1},
@@ -82,6 +84,7 @@ TEST(JogoDaVelhaTeste, VencedorX)
 
 TEST(JogoDaVelhaTeste, VencedorO)
 {
+    // Espera-se que caso o vencedor do jogo seja o O(2), a função retorne 2s.
     // Linha com O
     int jogoTeste1[3][3] = {
         {1, 1, 0},

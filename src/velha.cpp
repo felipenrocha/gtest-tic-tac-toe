@@ -3,8 +3,7 @@
 JogoDaVelha::JogoDaVelha(int jogo[3][3])
 {
 
-    /*Inicialização da matriz com valores 0.    
-    */
+    // Inicialização da matriz com valores 0.
     copy(&jogo[0][0], &jogo[0][0] + 3 * 3, &matriz[0][0]);
 }
 
