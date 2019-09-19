@@ -9,10 +9,20 @@ JogoDaVelha::JogoDaVelha(int jogo[3][3])
 
 int JogoDaVelha::getValor(int linha, int coluna)
 {
+    // Retorna o valor da posicao linha,coluna
+
     return this->matriz[linha][coluna];
 }
 int JogoDaVelha::getResultado()
 {
+    /*    
+        Especificações:
+            jogoImpossivel  -> retorna-2
+            jogoIndefinido  -> retorna -1
+            jogoEmpatado    -> retorna 0
+            vitoriaX        -> retorna 1
+            vitoriaO        -> retorna 2 
+    */
     if (jogoImpossivel())
     {
         return -2;
@@ -21,9 +31,8 @@ int JogoDaVelha::getResultado()
     {
         return -1;
     }
-    else if (jogoCheio() && !vitoriaO() && !vitoriaX()) //TODO: refatorar para função
+    else if (jogoEmpatado())
     {
-        // Caso um jogo tenha válido terminado e não exista jogador vencedor, o jogo está empatado
         return 0;
     }
     else if (vitoriaX())
@@ -93,6 +102,19 @@ bool JogoDaVelha::jogoCheio()
     }
     return true;
 }
+
+/*
+    O método jogoEmpatado() retorna true caso o jogo esteja empatado, isto é: 
+    o jogo está cheio porém nao possui vencedores.
+*/
+bool JogoDaVelha::jogoEmpatado()
+{
+    if (jogoCheio() && !vitoriaO() && vitoriaX())
+    {
+        return true;
+    }
+    return false;
+}
 /* 
     O método jogoIndefinido() retorna true caso o jogo não esteja cheio e não haja vencedores.
 */
@@ -150,10 +172,10 @@ bool JogoDaVelha::jogoImpossivel()
 Os métodos checaLinha e checaColuna são responsáveis por checar se todos os elementos da linha/coluna sao iguais dado
 o valor inteiro.
 */
-
 bool JogoDaVelha::checaLinha(int valor, int linha)
 {
-    int quantidade = 0;
+
+    int quantidade = 0; // Variavel responsavel para garantir que existem 3 elementos iguais na mesma linha
 
     for (int i = 0; i < 3; i++)
     {
@@ -172,7 +194,7 @@ bool JogoDaVelha::checaLinha(int valor, int linha)
 bool JogoDaVelha::checaColuna(int valor, int coluna)
 {
 
-    int quantidade = 0; // Variavel responsavvel para garantir que existem 3 elementos iguais na mesma linha
+    int quantidade = 0; // Variavel responsavel para garantir que existem 3 elementos iguais na mesma linha
     for (int i = 0; i < 3; i++)
     {
         if (getValor(i, coluna) == valor)
@@ -186,6 +208,8 @@ bool JogoDaVelha::checaColuna(int valor, int coluna)
     }
     return false;
 }
+
+
 /*
 Os métodos checaDiagonalPrincipal e checaDiagonalSecundaria são responsáveis por checar se todos os elementos
 das diagonais sao iguais dado o valor inteiro.

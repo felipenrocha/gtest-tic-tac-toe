@@ -201,4 +201,12 @@ TEST(JogoDaVelhaTeste, JogoImpossivel)
         {0, 0, 0}};
     JogoDaVelha jogo3(jogoTeste3);
     ASSERT_EQ(-2, jogo3.getResultado());
+
+    // Valores diferentes de 0, 1 ou 2
+    int jogoTeste4[3][3] = {
+        {0, 3, 2},
+        {0, 0, 1},
+        {0, 0, 0}};
+    JogoDaVelha jogo4(jogoTeste4);
+    ASSERT_EQ(-2, jogo4.getResultado());
 }
