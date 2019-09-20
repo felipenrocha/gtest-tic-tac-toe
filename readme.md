@@ -26,7 +26,11 @@ Framework de teste: gtest
 
         $ sudo cp *.a /usr/lib
 
+Obs.: Ao clonar o repositório não é incluso o diretorio src/obj que é necessário para compilação, certifique-se de que o diretório é criado:
 
+    - Dentro do diretorio principal:
+        - $ mkdir src/obj
+     
 
 
 
