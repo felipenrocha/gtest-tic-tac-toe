@@ -109,7 +109,7 @@ bool JogoDaVelha::jogoCheio()
 */
 bool JogoDaVelha::jogoEmpatado()
 {
-    if (jogoCheio() && !vitoriaO() && vitoriaX())
+    if (jogoCheio() && !vitoriaO() && !vitoriaX())
     {
         return true;
     }
@@ -137,10 +137,6 @@ bool JogoDaVelha::jogoImpossivel()
 
     int quantidadeX = 0;
     int quantidadeO = 0;
-    if (vitoriaX() && vitoriaO())
-    {
-        return true;
-    }
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
@@ -162,6 +158,10 @@ bool JogoDaVelha::jogoImpossivel()
         }
     }
     if (quantidadeO > quantidadeX || quantidadeX > 1 + quantidadeO)
+    {
+        return true;
+    }
+    if (vitoriaX() && vitoriaO())
     {
         return true;
     }
@@ -208,7 +208,6 @@ bool JogoDaVelha::checaColuna(int valor, int coluna)
     }
     return false;
 }
-
 
 /*
 Os métodos checaDiagonalPrincipal e checaDiagonalSecundaria são responsáveis por checar se todos os elementos
