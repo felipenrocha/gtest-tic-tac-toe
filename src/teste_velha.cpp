@@ -24,7 +24,7 @@ TEST(JogoDaVelhaTeste, CriaJogo)
         }
     }
 }
-TEST(JogoDaVelhaTeste, getValor)
+TEST(JogoDaVelhaTeste, obterValor)
 {
     // Teste para garantir que a função getValor(int linha, int coluna) funcione corretamente.
     // Obs.: linhas e colunas começam em 0
