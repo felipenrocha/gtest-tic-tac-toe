@@ -209,4 +209,22 @@ TEST(JogoDaVelhaTeste, JogoImpossivel)
         {0, 0, 0}};
     JogoDaVelha jogo4(jogoTeste4);
     ASSERT_EQ(-2, jogo4.getResultado());
+
+    // Jogo com letras:
+
+    int jogoTeste5[3][3] = {
+        {0, 'D', 2},
+        {0, 0, 1},
+        {'A', 0, 0}};
+    JogoDaVelha jogo5(jogoTeste5);
+    ASSERT_EQ(-2, jogo5.getResultado());
+
+    // Jogo com nº de O's > que nª de X's: impossível pois o X começa a partida de acordo com as refras:
+
+    int jogoTeste6[3][3] = {
+        {0, 0, 2},
+        {0, 0, 1},
+        {2, 0, 0}};
+    JogoDaVelha jogo6(jogoTeste6);
+    ASSERT_EQ(-2, jogo6.getResultado());
 }

@@ -130,7 +130,7 @@ bool JogoDaVelha::jogoIndefinido()
 
 bool JogoDaVelha::jogoImpossivel()
 {
-    // O jogo será impossivel caso os valores seja diferentes de 0, 1 ou 2;
+    // O jogo será impossivel caso os valores sejam diferentes de 0, 1 ou 2;
     // Ou a quantidadeX > 1 + quantidadeO (Significa que o X jogou 2 vezes.)
     // Ou a quantidadeO > quantidadeX (O jogou duas vezes ou começou a partida.)
     // Ou 2 jogos vitoriosos
@@ -170,12 +170,12 @@ bool JogoDaVelha::jogoImpossivel()
 
 /*
 Os métodos checaLinha e checaColuna são responsáveis por checar se todos os elementos da linha/coluna sao iguais dado
-o valor inteiro.
+um valor inteiro.
 */
 bool JogoDaVelha::checaLinha(int valor, int linha)
 {
 
-    int quantidade = 0; // Variavel responsavel para garantir que existem 3 elementos iguais na mesma linha
+    int quantidade = 0; // Variavel responsavel para contar a quantidade de elementos igual ao valor naquela linha
 
     for (int i = 0; i < 3; i++)
     {
@@ -184,7 +184,7 @@ bool JogoDaVelha::checaLinha(int valor, int linha)
             quantidade++;
         }
     }
-    if (quantidade == 3)
+    if (quantidade == 3) // Se todos elementos forem iguais, a quantidade daquele valor será 3
     {
         return true;
     }
@@ -236,7 +236,7 @@ bool JogoDaVelha::checaDiagonalPrincipal(int valor)
 bool JogoDaVelha::checaDiagonalSecundaria(int valor)
 {
     int quantidade = 0;
-    // Diagonal secundária:
+    // Diagonal secundária: Linha 2(--) coluna 0(++)
     for (int i = 2, j = 0; i >= 0, j < 3; i--, j++)
     {
         if (getValor(i, j) == valor)
